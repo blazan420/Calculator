@@ -23,6 +23,8 @@ public class Calculator extends Activity implements View.OnClickListener{
     private OPERATOR currentOperator;
     private int calculationsResult;
 
+    private String calculationsString;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +33,8 @@ public class Calculator extends Activity implements View.OnClickListener{
 
         currentNumber = "";
         calculationsResult = 0;
+
+        calculationsString = "";
 
 
         txtCalculations = findViewById(R.id.txtCalculations);
@@ -74,6 +78,8 @@ public class Calculator extends Activity implements View.OnClickListener{
                 break;
             case R.id.btnPlus:
                 operatorIsTapped(OPERATOR.PLUS);
+             //   calculationsString += " + ";
+             calculationsString = calculationsString + " + ";
                 break;
             case R.id.btn4:
                 numberIsTapped(4);
@@ -86,6 +92,8 @@ public class Calculator extends Activity implements View.OnClickListener{
                 break;
             case R.id.btnSubtract:
                 operatorIsTapped(OPERATOR.SUBTRACT);
+
+                calculationsString = calculationsString + " - ";
                 break;
             case R.id.btn1:
                 numberIsTapped(1);
@@ -98,6 +106,7 @@ public class Calculator extends Activity implements View.OnClickListener{
                 break;
             case R.id.btnMultiply:
                 operatorIsTapped(OPERATOR.MULTIPLY);
+                calculationsString = calculationsString + " * ";
                 break;
             case R.id.btnClear:
                 break;
@@ -106,9 +115,11 @@ public class Calculator extends Activity implements View.OnClickListener{
                 break;
             case R.id.btnDivide:
                 operatorIsTapped(OPERATOR.DIVIDE);
+                calculationsString = calculationsString + " / ";
                 break;
 
         }
+        txtCalculations.setText(calculationsString);
 
     }
 
@@ -116,6 +127,9 @@ public class Calculator extends Activity implements View.OnClickListener{
 
         currentNumber = currentNumber + String.valueOf(tappedNumber);
         txtResults.setText(currentNumber);
+
+        calculationsString = currentNumber;
+        txtCalculations.setText(calculationsString);
     }
 
     private  void operatorIsTapped(OPERATOR tappedOperator) {
@@ -144,6 +158,7 @@ public class Calculator extends Activity implements View.OnClickListener{
 
             stringNumberAtLeft = String.valueOf(calculationsResult);
             txtResults.setText(stringNumberAtLeft);
+            calculationsString = stringNumberAtLeft;
 
         } else {
 
