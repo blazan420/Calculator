@@ -41,7 +41,6 @@ public class Calculator extends Activity implements View.OnClickListener{
         findViewById(R.id.btn8).setOnClickListener(Calculator.this);
         findViewById(R.id.btn9).setOnClickListener(Calculator.this);
         findViewById(R.id.btnPlus).setOnClickListener(Calculator.this);
-        findViewById(R.id.btnPlus).setOnClickListener(Calculator.this);
         findViewById(R.id.btn4).setOnClickListener(Calculator.this);
         findViewById(R.id.btn5).setOnClickListener(Calculator.this);
         findViewById(R.id.btn6).setOnClickListener(Calculator.this);
