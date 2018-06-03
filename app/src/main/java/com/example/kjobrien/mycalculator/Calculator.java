@@ -65,6 +65,9 @@ public class Calculator extends Activity implements View.OnClickListener{
         switch (v.getId()) {
 
             case R.id.btnEqual:
+
+                operatorIsTapped(OPERATOR.EQUAL);
+
                 break;
 
             case R.id.btn7:
@@ -134,33 +137,38 @@ public class Calculator extends Activity implements View.OnClickListener{
 
     private  void operatorIsTapped(OPERATOR tappedOperator) {
 
-        if (currentOperator != null && currentNumber != "") {
+        if (currentOperator != null) {
 
-            stringNumberAtRight = currentNumber;
-            currentNumber = "";
+            if (currentNumber != "") {
 
-            switch (currentOperator) {
-                case PLUS:
-                    calculationsResult = Integer.parseInt(stringNumberAtLeft) + Integer.parseInt(stringNumberAtRight);
-                    break;
-                case SUBTRACT:
-                    calculationsResult = Integer.parseInt(stringNumberAtLeft) - Integer.parseInt(stringNumberAtRight);
-                    break;
-                case MULTIPLY:
-                    calculationsResult = Integer.parseInt(stringNumberAtLeft) * Integer.parseInt(stringNumberAtRight);
-                    break;
-                case DIVIDE:
-                    calculationsResult = Integer.parseInt(stringNumberAtLeft) / Integer.parseInt(stringNumberAtRight);
-                    break;
-               // case EQUAL:
-               //     break;
+
+                stringNumberAtRight = currentNumber;
+                currentNumber = "";
+
+                switch (currentOperator) {
+                    case PLUS:
+                        calculationsResult = Integer.parseInt(stringNumberAtLeft) + Integer.parseInt(stringNumberAtRight);
+                        break;
+                    case SUBTRACT:
+                        calculationsResult = Integer.parseInt(stringNumberAtLeft) - Integer.parseInt(stringNumberAtRight);
+                        break;
+                    case MULTIPLY:
+                        calculationsResult = Integer.parseInt(stringNumberAtLeft) * Integer.parseInt(stringNumberAtRight);
+                        break;
+                    case DIVIDE:
+                        calculationsResult = Integer.parseInt(stringNumberAtLeft) / Integer.parseInt(stringNumberAtRight);
+                        break;
+
+                }
+
+                stringNumberAtLeft = String.valueOf(calculationsResult);
+                txtResults.setText(stringNumberAtLeft);
+                calculationsString = stringNumberAtLeft;
+
             }
+        }
 
-            stringNumberAtLeft = String.valueOf(calculationsResult);
-            txtResults.setText(stringNumberAtLeft);
-            calculationsString = stringNumberAtLeft;
-
-        } else {
+        else {
 
             stringNumberAtLeft = currentNumber;
             currentNumber = "";
