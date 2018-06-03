@@ -112,6 +112,9 @@ public class Calculator extends Activity implements View.OnClickListener{
                 calculationsString = calculationsString + " * ";
                 break;
             case R.id.btnClear:
+
+                clearTapped();
+
                 break;
             case R.id.btn0:
                 numberIsTapped(0);
@@ -175,5 +178,17 @@ public class Calculator extends Activity implements View.OnClickListener{
         }
 
         currentOperator = tappedOperator;
+    }
+
+    private void clearTapped() {
+        stringNumberAtLeft = "";
+        stringNumberAtRight = "";
+        calculationsResult = 0;
+        currentNumber = "";
+        currentOperator = null;
+        txtResults.setText("0");
+        calculationsString = "0";
+
+
     }
 }
